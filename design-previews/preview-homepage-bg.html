@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Verse &amp; Vision — Homepage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --text:         #1C1917;
+  --text-sub:     #6B6560;
+  --accent:       #7C5C3E;
+  --border:       #DDD8CC;
+  --surface:      #FFFFFF;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem 3.5rem;
+  gap: 3rem;
+}
+
+.bg-img {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  opacity: 0.18;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.page > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── HEADER ── */
+header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.site-title {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: clamp(2.25rem, 5vw, 3rem);
+  font-weight: 400;
+  color: var(--accent);
+  letter-spacing: -0.01em;
+}
+
+.site-subtitle {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-style: italic;
+  font-size: 1.0625rem;
+  color: #d8d9ce;
+}
+
+/* ── FORM ── */
+form {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.field { display: flex; flex-direction: column; gap: 0.35rem; }
+
+label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-sub);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+select {
+  padding: 0.75rem 1rem;
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 0.9375rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  appearance: none;
+  width: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B6560' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.875rem center;
+}
+
+.submit-btn {
+  height: 52px;
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 0.25rem;
+}
+
+/* ── ATTRIBUTION ── */
+.photo-credit {
+  position: fixed;
+  bottom: 0.875rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-style: italic;
+  color: var(--text-sub);
+  opacity: 0.75;
+  z-index: 1;
+}
+
+.photo-credit a {
+  color: var(--text-sub);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+</style>
+</head>
+<body>
+
+<img class="bg-img" src="bg-ocean.jpg" alt="" aria-hidden="true" />
+
+<div class="page">
+
+  <header>
+    <h1 class="site-title">Verse &amp; Vision</h1>
+    <p class="site-subtitle">Original verse in classical forms, paired with art from the Met.</p>
+  </header>
+
+  <form>
+    <div class="field">
+      <label for="style">Style</label>
+      <select id="style"><option>Sonnet</option></select>
+    </div>
+    <div class="field">
+      <label for="mood">Mood</label>
+      <select id="mood"><option>Wistful</option></select>
+    </div>
+    <button class="submit-btn">Generate poem</button>
+  </form>
+
+  <footer class="photo-credit">
+    Photo by <a href="https://unsplash.com/@elou?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank" rel="noopener noreferrer">Emily Campbell</a>
+    on <a href="https://unsplash.com/photos/calm-blue-ocean-photography-yBq_CYFagvM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank" rel="noopener noreferrer">Unsplash</a>
+  </footer>
+</div>
+
+</body>
+</html>

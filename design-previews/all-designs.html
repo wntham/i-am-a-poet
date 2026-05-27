@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Design Previews</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: system-ui, sans-serif; background: #dedad3; padding: 2rem; display: flex; flex-direction: column; gap: 4rem; }
+.label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #555; margin-bottom: 0.75rem; }
+.frame { border-radius: 10px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.22); }
+
+/* Artwork placeholder */
+.art-placeholder {
+  flex: 1; display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+}
+
+
+/* ═══════════════ DESIGN 1 — PARCHMENT ═══════════════ */
+.d1 { background: #F7F4EF; font-family: system-ui, sans-serif; }
+.d1 .form-page { min-height: 520px; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:3rem 2rem; gap:2.5rem; }
+.d1 h1 { font-family: Georgia,serif; font-size:2.5rem; font-weight:400; color:#7C5C3E; }
+.d1 .sub { font-family:Georgia,serif; font-style:italic; color:#6B6560; font-size:1rem; margin-top:.5rem; }
+.d1 form { width:100%; max-width:460px; display:flex; flex-direction:column; gap:1rem; }
+.d1 fieldset { border:none; display:flex; flex-direction:column; gap:.3rem; }
+.d1 legend { font-size:.72rem; font-weight:600; color:#6B6560; text-transform:uppercase; letter-spacing:.08em; }
+.d1 select { width:100%; padding:.7rem 1rem; font-size:.9375rem; border:1.5px solid #DDD8CC; border-radius:8px; background:#fff; color:#1C1917; }
+.d1 .btn { height:50px; width:100%; margin-top:.25rem; background:#7C5C3E; color:#fff; border:none; border-radius:8px; font-size:1rem; font-weight:600; }
+
+.d1 .result { display:grid; grid-template-columns:1fr 1fr; border-top:2px solid #DDD8CC; min-height:500px; }
+.d1 .art-col { display:flex; flex-direction:column; background:#fff; }
+.d1 .art-placeholder { background: linear-gradient(135deg, #c8b89a 0%, #a08060 40%, #7a6040 70%, #9a7850 100%); color:rgba(255,255,255,0.5); height:380px; }
+.d1 .attr { padding:.875rem 1.25rem; border-top:1px solid #DDD8CC; display:flex; flex-direction:column; gap:.2rem; }
+.d1 .attr-title { font-family:Georgia,serif; font-style:italic; font-size:.875rem; color:#1C1917; }
+.d1 .attr-artist { font-size:.8rem; font-weight:600; color:#1C1917; }
+.d1 .attr-meta { font-size:.72rem; color:#6B6560; }
+.d1 .attr-link { font-size:.72rem; color:#7C5C3E; }
+.d1 .poem-col { padding:2rem; display:flex; flex-direction:column; gap:1.25rem; background:#fff; border-left:1px solid #DDD8CC; }
+.d1 .pills { display:flex; gap:.5rem; }
+.d1 .pill { font-size:.68rem; font-weight:600; color:#7C5C3E; background:#E8DDD1; padding:.2rem .65rem; border-radius:999px; text-transform:uppercase; letter-spacing:.08em; }
+.d1 .poem { font-family:Georgia,serif; font-style:italic; font-size:1.0625rem; line-height:1.85; white-space:pre-wrap; color:#1C1917; }
+.d1 .actions { padding:.875rem 1.5rem; border-top:1px solid #DDD8CC; display:flex; gap:.625rem; background:#F7F4EF; }
+.d1 .act-btn { padding:.5rem 1.1rem; font-size:.85rem; font-weight:600; color:#7C5C3E; background:#fff; border:1.5px solid #E8DDD1; border-radius:8px; }
+
+/* ═══════════════ DESIGN 2 — NOIR ═══════════════ */
+.d2 { background:#0E0D0B; font-family:system-ui,sans-serif; }
+.d2 .form-page { min-height:520px; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:3rem 2rem; gap:2.5rem; background:radial-gradient(ellipse at 50% -10%, #221e12 0%, #0E0D0B 65%); }
+.d2 .eyebrow { font-size:.62rem; font-weight:600; letter-spacing:.25em; text-transform:uppercase; color:#C9A84C; opacity:.85; }
+.d2 h1 { font-family:Georgia,serif; font-size:3rem; font-weight:300; color:#EDE8DF; letter-spacing:.02em; text-align:center; line-height:1.2; }
+.d2 .sub { font-family:Georgia,serif; font-style:italic; color:#8A8478; font-size:.9375rem; }
+.d2 .orn { color:#C9A84C; opacity:.4; letter-spacing:.5em; font-size:.68rem; }
+.d2 form { width:100%; max-width:420px; display:flex; flex-direction:column; gap:1rem; }
+.d2 fieldset { border:none; display:flex; flex-direction:column; gap:.3rem; }
+.d2 legend { font-size:.62rem; font-weight:600; color:#8A8478; text-transform:uppercase; letter-spacing:.18em; }
+.d2 select { width:100%; padding:.7rem 1rem; font-size:.9375rem; border:1px solid #2E2C28; border-radius:4px; background:#171613; color:#EDE8DF; }
+.d2 .btn { height:50px; width:100%; margin-top:.25rem; background:#C9A84C; color:#0E0D0B; border:none; border-radius:4px; font-size:.8rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; }
+
+.d2 .result { display:grid; grid-template-columns:1fr 1fr; border-top:1px solid #2E2C28; min-height:500px; }
+.d2 .art-col { display:flex; flex-direction:column; background:#171613; border-right:1px solid #2E2C28; }
+.d2 .art-placeholder { background:linear-gradient(135deg,#2a2218 0%,#1a1510 40%,#352b1a 70%,#241d10 100%); color:rgba(201,168,76,.25); height:380px; }
+.d2 .attr { padding:.875rem 1.25rem; border-top:1px solid #2E2C28; display:flex; flex-direction:column; gap:.2rem; background:#171613; }
+.d2 .attr-title { font-family:Georgia,serif; font-style:italic; font-size:.875rem; color:#EDE8DF; }
+.d2 .attr-artist { font-size:.78rem; color:#8A8478; }
+.d2 .attr-meta { font-size:.7rem; color:#8A8478; opacity:.65; }
+.d2 .attr-link { font-size:.7rem; color:#C9A84C; opacity:.8; }
+.d2 .poem-col { padding:2.5rem 2rem; display:flex; flex-direction:column; gap:1.5rem; background:#171613; }
+.d2 .pills { display:flex; gap:.5rem; }
+.d2 .pill { font-size:.6rem; font-weight:600; color:#C9A84C; background:#2A2318; padding:.2rem .65rem; border-radius:2px; text-transform:uppercase; letter-spacing:.12em; border:1px solid rgba(201,168,76,.2); }
+.d2 .poem { font-family:Georgia,serif; font-style:italic; font-size:1.0625rem; line-height:2; white-space:pre-wrap; color:#EDE8DF; font-weight:300; }
+.d2 .actions { padding:.875rem 1.5rem; border-top:1px solid #2E2C28; display:flex; gap:.625rem; background:#0E0D0B; }
+.d2 .act-btn { padding:.45rem .9rem; font-size:.7rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:#8A8478; background:transparent; border:1px solid #2E2C28; border-radius:4px; }
+
+/* ═══════════════ DESIGN 3 — LINEN / MINIMAL ═══════════════ */
+.d3 { background:#F9F8F6; font-family:system-ui,sans-serif; }
+.d3 .form-page { display:grid; grid-template-columns:1fr 1fr; min-height:520px; }
+.d3 .form-left { background:#3D5A80; padding:3rem; display:flex; flex-direction:column; }
+.d3 .wordmark { font-size:.875rem; color:rgba(255,255,255,.5); font-weight:500; }
+.d3 h1 { font-family:Georgia,serif; font-size:2.75rem; font-weight:400; color:#fff; line-height:1.2; margin-top:auto; }
+.d3 .sub { font-family:Georgia,serif; font-style:italic; color:rgba(255,255,255,.5); font-size:.9375rem; margin-top:1rem; }
+.d3 .form-right { padding:3rem; display:flex; flex-direction:column; justify-content:center; gap:1.75rem; background:#F9F8F6; }
+.d3 .form-heading { font-size:.72rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#71717A; }
+.d3 form { display:flex; flex-direction:column; gap:1rem; }
+.d3 fieldset { border:none; display:flex; flex-direction:column; gap:.3rem; }
+.d3 legend { font-size:.75rem; font-weight:600; color:#71717A; text-transform:uppercase; letter-spacing:.06em; }
+.d3 select { width:100%; padding:.7rem 1rem; font-size:.9375rem; border:1.5px solid #E4E1DC; border-radius:6px; background:#fff; color:#18181B; }
+.d3 .btn { height:50px; width:100%; margin-top:.25rem; background:#3D5A80; color:#fff; border:none; border-radius:6px; font-size:.875rem; font-weight:600; letter-spacing:.03em; }
+
+.d3 .result-nav { padding:1rem 1.5rem; border-bottom:1px solid #E4E1DC; display:flex; align-items:center; justify-content:space-between; background:#fff; }
+.d3 .nav-wm { font-family:Georgia,serif; font-size:.9375rem; color:#3D5A80; }
+.d3 .back { background:none; border:none; font-size:.8rem; color:#71717A; }
+.d3 .result-body { display:grid; grid-template-columns:1fr 1fr; min-height:500px; }
+.d3 .art-col { display:flex; flex-direction:column; border-right:1px solid #E4E1DC; background:#fff; }
+.d3 .art-placeholder { background:linear-gradient(135deg,#b8c8d8 0%,#8aa8c0 40%,#6888a0 70%,#90a8c0 100%); color:rgba(61,90,128,.3); height:380px; }
+.d3 .attr { padding:1.125rem 1.5rem; border-top:1px solid #E4E1DC; display:flex; flex-direction:column; gap:.25rem; background:#fff; }
+.d3 .attr-title { font-family:Georgia,serif; font-style:italic; font-size:.875rem; color:#18181B; }
+.d3 .attr-artist { font-size:.8125rem; font-weight:600; color:#18181B; }
+.d3 .attr-meta { font-size:.74rem; color:#71717A; }
+.d3 .attr-link { font-size:.74rem; color:#3D5A80; }
+.d3 .poem-col { padding:2.5rem; display:flex; flex-direction:column; gap:1.5rem; background:#F9F8F6; }
+.d3 .pills { display:flex; gap:.5rem; }
+.d3 .pill { font-size:.7rem; font-weight:700; color:#3D5A80; background:#EBF0F7; padding:.2rem .65rem; border-radius:4px; text-transform:uppercase; letter-spacing:.08em; }
+.d3 .poem { font-family:Georgia,serif; font-style:italic; font-size:1.0625rem; line-height:1.9; white-space:pre-wrap; color:#18181B; }
+.d3 hr { border:none; border-top:1px solid #E4E1DC; }
+.d3 .actions { display:flex; gap:.5rem; }
+.d3 .act-btn { padding:.45rem .9rem; font-size:.8125rem; font-weight:500; color:#71717A; background:transparent; border:1.5px solid #E4E1DC; border-radius:6px; }
+.d3 .act-primary { color:#3D5A80; background:#EBF0F7; border-color:#EBF0F7; }
+</style>
+</head>
+<body>
+
+<!-- DESIGN 1 — PARCHMENT -->
+<div>
+  <p class="label">Design 1 — Parchment / Literary</p>
+  <div class="frame d1">
+    <div class="form-page">
+      <header style="text-align:center">
+        <h1>The Poetry Cabinet</h1>
+        <p class="sub">Original verse in classical forms, paired with art from the Met.</p>
+      </header>
+      <form>
+        <fieldset><legend>Style</legend><select><option>Sonnet</option></select></fieldset>
+        <fieldset><legend>Mood</legend><select><option>Wistful</option></select></fieldset>
+        <button class="btn">Generate poem</button>
+      </form>
+    </div>
+    <div class="result">
+      <div class="art-col">
+        <div class="art-placeholder art-placeholder">Artwork</div>
+        <div class="attr">
+          <span class="attr-title">Wheat Field with Cypresses</span>
+          <span class="attr-artist">Vincent van Gogh · 1889</span>
+          <a class="attr-link">The Metropolitan Museum of Art · No. 49.30</a>
+        </div>
+      </div>
+      <div class="poem-col">
+        <div class="pills"><span class="pill">Sonnet</span><span class="pill">Wistful</span></div>
+        <pre class="poem">The light that falls on amber fields at dusk
+Makes shadows long where once the harvest stood;
+I breathe the evening, heavy with the musk
+Of summer spent—and mourn as mortals should.
+
+Each golden row that bent beneath the sun
+Now lies in silence, gathered, bound, and gone;
+The turning year declares what can't be undone,
+And still the faithful cypresses press on.
+
+What use is grief? The earth itself forgets
+The names of every crop it ever grew;
+And yet some part of me in autumn sets
+A quiet candle to the fading view.
+
+  To love a season is to love its close—
+  The truest blooms are those that bloom to go.</pre>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="act-btn">Regenerate</button>
+      <button class="act-btn">Save as image</button>
+      <button class="act-btn">Share</button>
+    </div>
+  </div>
+</div>
+
+<!-- DESIGN 2 — NOIR -->
+<div>
+  <p class="label">Design 2 — Noir / Gallery</p>
+  <div class="frame d2">
+    <div class="form-page">
+      <p class="eyebrow">The Poetry Cabinet</p>
+      <div style="text-align:center">
+        <h1>Original verse,<br/>classical forms.</h1>
+        <p class="sub" style="margin-top:.75rem">Paired with public domain art from the Met.</p>
+        <p class="orn" style="margin-top:1.25rem">— ✦ —</p>
+      </div>
+      <form>
+        <fieldset><legend>Style</legend><select><option>Sonnet</option></select></fieldset>
+        <fieldset><legend>Mood</legend><select><option>Wistful</option></select></fieldset>
+        <button class="btn">Generate poem</button>
+      </form>
+    </div>
+    <div class="result">
+      <div class="art-col">
+        <div class="art-placeholder">Artwork</div>
+        <div class="attr">
+          <span class="attr-title">Wheat Field with Cypresses</span>
+          <span class="attr-artist">Vincent van Gogh · 1889</span>
+          <a class="attr-link">The Metropolitan Museum of Art · No. 49.30</a>
+        </div>
+      </div>
+      <div class="poem-col">
+        <div class="pills"><span class="pill">Sonnet</span><span class="pill">Wistful</span></div>
+        <pre class="poem">The light that falls on amber fields at dusk
+Makes shadows long where once the harvest stood;
+I breathe the evening, heavy with the musk
+Of summer spent—and mourn as mortals should.
+
+Each golden row that bent beneath the sun
+Now lies in silence, gathered, bound, and gone;
+The turning year declares what can't be undone,
+And still the faithful cypresses press on.
+
+What use is grief? The earth itself forgets
+The names of every crop it ever grew;
+And yet some part of me in autumn sets
+A quiet candle to the fading view.
+
+  To love a season is to love its close—
+  The truest blooms are those that bloom to go.</pre>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="act-btn">Regenerate</button>
+      <button class="act-btn">Save as image</button>
+      <button class="act-btn">Share</button>
+    </div>
+  </div>
+</div>
+
+<!-- DESIGN 3 — MINIMAL -->
+<div>
+  <p class="label">Design 3 — Linen / Minimal</p>
+  <div class="frame d3">
+    <div class="form-page">
+      <div class="form-left">
+        <span class="wordmark">The Poetry Cabinet</span>
+        <div style="margin-top:auto">
+          <h1>Verse &amp;<br/>vision.</h1>
+          <p class="sub">Original poems in classical forms,<br/>paired with art from the Met.</p>
+        </div>
+      </div>
+      <div class="form-right">
+        <p class="form-heading">Choose your poem</p>
+        <form>
+          <fieldset><legend>Style</legend><select><option>Sonnet</option></select></fieldset>
+          <fieldset><legend>Mood</legend><select><option>Wistful</option></select></fieldset>
+          <button class="btn">Generate poem →</button>
+        </form>
+      </div>
+    </div>
+    <div class="result-nav">
+      <span class="nav-wm">The Poetry Cabinet</span>
+      <button class="back">← New poem</button>
+    </div>
+    <div class="result-body">
+      <div class="art-col">
+        <div class="art-placeholder">Artwork</div>
+        <div class="attr">
+          <span class="attr-title">Wheat Field with Cypresses</span>
+          <span class="attr-artist">Vincent van Gogh · 1889</span>
+          <a class="attr-link">The Metropolitan Museum of Art · No. 49.30</a>
+        </div>
+      </div>
+      <div class="poem-col">
+        <div class="pills"><span class="pill">Sonnet</span><span class="pill">Wistful</span></div>
+        <pre class="poem">The light that falls on amber fields at dusk
+Makes shadows long where once the harvest stood;
+I breathe the evening, heavy with the musk
+Of summer spent—and mourn as mortals should.
+
+Each golden row that bent beneath the sun
+Now lies in silence, gathered, bound, and gone;
+The turning year declares what can't be undone,
+And still the faithful cypresses press on.
+
+What use is grief? The earth itself forgets
+The names of every crop it ever grew;
+And yet some part of me in autumn sets
+A quiet candle to the fading view.
+
+  To love a season is to love its close—
+  The truest blooms are those that bloom to go.</pre>
+        <hr/>
+        <div class="actions">
+          <button class="act-btn act-primary">Regenerate</button>
+          <button class="act-btn">Save as image</button>
+          <button class="act-btn">Share</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

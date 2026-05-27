@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Design 2 — Noir Gallery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0E0D0B;
+    --surface: #171613;
+    --border: #2E2C28;
+    --text: #EDE8DF;
+    --text-sub: #8A8478;
+    --gold: #C9A84C;
+    --gold-dim: #2A2318;
+  }
+  body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+  /* ── FORM PAGE ── */
+  .form-page {
+    min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; padding: 2rem 1.5rem; gap: 3.5rem;
+    background: radial-gradient(ellipse at 50% 0%, #1e1a12 0%, var(--bg) 70%);
+  }
+  .form-page header { text-align: center; }
+  .eyebrow { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; opacity: 0.8; }
+  .form-page h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif; font-size: 3.25rem;
+    font-weight: 300; color: var(--text); letter-spacing: 0.02em;
+  }
+  .form-page .subtitle {
+    font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic;
+    color: var(--text-sub); font-size: 1.1rem; margin-top: 0.75rem; font-weight: 300;
+  }
+  .ornament { color: var(--gold); opacity: 0.5; letter-spacing: 0.5em; font-size: 0.75rem; margin-top: 1.25rem; }
+  form { width: 100%; max-width: 480px; display: flex; flex-direction: column; gap: 1.25rem; }
+  .field { display: flex; flex-direction: column; gap: 0.375rem; }
+  label { font-size: 0.7rem; font-weight: 500; color: var(--text-sub); text-transform: uppercase; letter-spacing: 0.15em; }
+  select {
+    padding: 0.75rem 1rem; font-family: 'Inter', sans-serif; font-size: 0.9375rem;
+    color: var(--text); background: var(--surface); border: 1px solid var(--border);
+    border-radius: 4px; appearance: none; width: 100%; cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238A8478' stroke-width='1.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 0.875rem center;
+  }
+  select:focus { outline: none; border-color: var(--gold); }
+  .submit {
+    margin-top: 0.75rem; padding: 0; height: 52px; font-family: 'Inter', sans-serif;
+    font-size: 0.875rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--bg); background: var(--gold); border: none; border-radius: 4px; cursor: pointer; width: 100%;
+  }
+  .submit:hover { opacity: 0.88; }
+
+  /* ── RESULT PAGE ── */
+  .result-page { padding: 1.5rem; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; min-height: 100vh; background: var(--bg); }
+  .result-page header { width: 100%; max-width: 1100px; display: flex; justify-content: space-between; align-items: center; }
+  .back-btn { background: none; border: none; font-family: 'Inter', sans-serif; font-size: 0.8rem; color: var(--text-sub); cursor: pointer; letter-spacing: 0.08em; text-transform: uppercase; }
+  .back-btn:hover { color: var(--gold); }
+  .card { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; width: 100%; max-width: 1100px; min-height: 540px; border: 1px solid var(--border); }
+  .artwork-panel { background: var(--surface); display: flex; flex-direction: column; overflow: hidden; }
+  .artwork-img { flex: 1; object-fit: cover; width: 100%; display: block; min-height: 0; filter: brightness(0.92) contrast(1.05); }
+  .attribution { padding: 1rem 1.25rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.2rem; }
+  .attr-title { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.9375rem; color: var(--text); }
+  .attr-artist { font-size: 0.8125rem; color: var(--text-sub); font-weight: 400; }
+  .attr-date, .attr-acc { font-size: 0.75rem; color: var(--text-sub); opacity: 0.7; }
+  .attr-museum { font-size: 0.75rem; color: var(--gold); text-decoration: none; opacity: 0.85; }
+  .poem-panel { background: var(--surface); padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 1.5rem; border-left: 1px solid var(--border); }
+  .pills { display: flex; gap: 0.5rem; }
+  .pill { font-size: 0.65rem; font-weight: 500; color: var(--gold); background: var(--gold-dim); padding: 0.25rem 0.75rem; border-radius: 2px; text-transform: uppercase; letter-spacing: 0.12em; border: 1px solid rgba(201,168,76,0.2); }
+  .poem-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.15rem; line-height: 2; white-space: pre-wrap; flex: 1; color: var(--text); font-weight: 300; }
+  .action-bar { display: flex; gap: 0.75rem; width: 100%; max-width: 1100px; }
+  .action-btn { padding: 0.5rem 1.125rem; font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-sub); background: transparent; border: 1px solid var(--border); border-radius: 4px; cursor: pointer; }
+  .action-btn:hover { color: var(--gold); border-color: rgba(201,168,76,0.4); }
+
+  .section-label { font-size: 0.75rem; color: var(--text-sub); text-align: center; letter-spacing: 0.15em; padding: 1.5rem 0 0; opacity: 0.4; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<!-- FORM PAGE -->
+<div class="form-page">
+  <header>
+    <p class="eyebrow">The Poetry Cabinet</p>
+    <h1>Original verse,<br/>classical forms.</h1>
+    <p class="subtitle">Paired with public domain art from the Met.</p>
+    <p class="ornament">— ✦ —</p>
+  </header>
+  <form>
+    <div class="field">
+      <label for="style">Style</label>
+      <select id="style"><option>Sonnet</option></select>
+    </div>
+    <div class="field">
+      <label for="mood">Mood</label>
+      <select id="mood"><option>Wistful</option></select>
+    </div>
+    <button class="submit" type="button">Generate poem</button>
+  </form>
+</div>
+
+<p class="section-label">— result page —</p>
+
+<!-- RESULT PAGE -->
+<div class="result-page">
+  <header><button class="back-btn">← New poem</button></header>
+  <div class="card">
+    <div class="artwork-panel">
+      <img class="artwork-img" src="https://images.metmuseum.org/CRDImages/ep/original/DT1567.jpg" alt="Wheat Field with Cypresses" style="height:400px;"/>
+      <div class="attribution">
+        <span class="attr-title">Wheat Field with Cypresses</span>
+        <span class="attr-artist">Vincent van Gogh</span>
+        <span class="attr-date">1889</span>
+        <a class="attr-museum" href="#">The Metropolitan Museum of Art</a>
+        <span class="attr-acc">Accession no. 49.30</span>
+      </div>
+    </div>
+    <div class="poem-panel">
+      <div class="pills"><span class="pill">Sonnet</span><span class="pill">Wistful</span></div>
+      <pre class="poem-text">The light that falls on amber fields at dusk
+Makes shadows long where once the harvest stood;
+I breathe the evening, heavy with the musk
+Of summer spent—and mourn as mortals should.
+
+Each golden row that bent beneath the sun
+Now lies in silence, gathered, bound, and gone;
+The turning year declares what can't be undone,
+And still the faithful cypresses press on.
+
+What use is grief? The earth itself forgets
+The names of every crop it ever grew;
+And yet some part of me in autumn sets
+A quiet candle to the fading view.
+
+  To love a season is to love its close—
+  The truest blooms are those that bloom to go.</pre>
+    </div>
+  </div>
+  <div class="action-bar">
+    <button class="action-btn">Regenerate</button>
+    <button class="action-btn">Save as image</button>
+    <button class="action-btn">Share</button>
+  </div>
+</div>
+
+</body>
+</html>

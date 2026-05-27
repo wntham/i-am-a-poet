@@ -1,0 +1,50 @@
+.error {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  padding: 1rem 1.25rem;
+  border-left: 3px solid var(--color-error);
+  background: #fdf4f4;
+  border-radius: var(--radius-md);
+}
+
+.icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid var(--color-error);
+  color: var(--color-error);
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 1;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.message {
+  font-size: 0.9375rem;
+  color: var(--color-error);
+}
+
+.retry {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  background: none;
+  border: none;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.retry:hover {
+  opacity: 0.75;
+}

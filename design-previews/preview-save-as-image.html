@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Verse & Vision — Save as Image Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #ccc8c0;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.section-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #4a4540;
+  align-self: flex-start;
+}
+
+/* Outer shell — simulates the downloaded PNG at screen resolution */
+.export-card {
+  width: 1100px;
+  background: #F7F4EF;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 12px 60px rgba(0,0,0,0.22), 0 2px 10px rgba(0,0,0,0.12);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Two-column body */
+.card-body {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  min-height: 540px;
+}
+
+/* ── ART COLUMN ── */
+.art-col {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-right: 1px solid #DDD8CC;
+}
+
+.art-img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+}
+
+.attribution {
+  padding: 1rem 1.25rem;
+  border-top: 1px solid #DDD8CC;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  flex: 1;
+}
+
+.attr-title  { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 0.9rem; color: #1C1917; }
+.attr-artist { font-size: 0.8125rem; font-weight: 600; color: #1C1917; }
+.attr-date   { font-size: 0.78rem; color: #6B6560; }
+.attr-museum { font-size: 0.78rem; color: #7C5C3E; font-weight: 500; }
+.attr-acc    { font-size: 0.72rem; color: #6B6560; margin-top: 0.1rem; }
+
+/* ── POEM COLUMN ── */
+.poem-col {
+  padding: 2.5rem 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+
+.poem-text {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-style: normal;
+  font-size: 1.0625rem;
+  line-height: 2;
+  color: #1C1917;
+  white-space: pre-wrap;
+  flex: 1;
+}
+
+.poem-meta {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-style: italic;
+  font-size: 0.875rem;
+  color: #6B6560;
+  margin-top: 1.75rem;
+}
+
+/* ── FOOTER BRANDING ── */
+.card-footer {
+  padding: 0.75rem 1.5rem;
+  background: #F7F4EF;
+  border-top: 1px solid #DDD8CC;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 0.85rem;
+  color: #7C5C3E;
+  letter-spacing: 0.01em;
+}
+
+.brand-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  color: #6B6560;
+}
+
+/* ── ANNOTATION ── */
+.annotation {
+  width: 1100px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ann-row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.ann-badge {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: #7C5C3E;
+  color: #fff;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  margin-top: 0.05rem;
+}
+
+.ann-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: #4a4540;
+  line-height: 1.5;
+}
+</style>
+</head>
+<body>
+
+<p class="section-label">Export — what the saved PNG looks like</p>
+
+<div class="export-card">
+  <div class="card-body">
+    <div class="art-col">
+      <img
+        class="art-img"
+        src="https://images.metmuseum.org/CRDImages/ep/original/DT1567.jpg"
+        alt="Wheat Field with Cypresses — Vincent van Gogh"
+      />
+      <div class="attribution">
+        <span class="attr-title">Wheat Field with Cypresses</span>
+        <span class="attr-artist">Vincent van Gogh</span>
+        <span class="attr-date">1889</span>
+        <span class="attr-museum">The Metropolitan Museum of Art</span>
+        <span class="attr-acc">Accession no. 49.30</span>
+      </div>
+    </div>
+    <div class="poem-col">
+      <pre class="poem-text">The light that falls on amber fields at dusk
+Makes shadows long where once the harvest stood;
+I breathe the evening, heavy with the musk
+Of summer spent—and mourn as mortals should.
+
+Each golden row that bent beneath the sun
+Now lies in silence, gathered, bound, and gone;
+The turning year declares what can't be undone,
+And still the faithful cypresses press on.
+
+What use is grief? The earth itself forgets
+The names of every crop it ever grew;
+And yet some part of me in autumn sets
+A quiet candle to the fading view.
+
+  To love a season is to love its close—
+  The truest blooms are those that bloom to go.</pre>
+      <p class="poem-meta">Sonnet, wistful</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <span class="brand">Verse &amp; Vision</span>
+    <span class="brand-sub">verse-and-vision.vercel.app</span>
+  </div>
+</div>
+
+<div class="annotation">
+  <div class="ann-row">
+    <span class="ann-badge">Note</span>
+    <span class="ann-text">The footer branding strip ("Verse &amp; Vision" + URL) appears only in the exported PNG — not on the result page itself. It can be omitted if you prefer a cleaner export.</span>
+  </div>
+  <div class="ann-row">
+    <span class="ann-badge">Tech</span>
+    <span class="ann-text">Captured with <code>html-to-image</code> at 2× pixel ratio (retina). The artwork is loaded through the same URL — Met CDN CORS is permissive so no canvas tainting occurs. Output filename: <code>poem-sonnet-wistful.png</code>.</span>
+  </div>
+</div>
+
+</body>
+</html>

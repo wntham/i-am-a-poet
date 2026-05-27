@@ -1,0 +1,32 @@
+.card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1100px;
+  min-height: 520px;
+}
+
+/* Export mode — adds ornamental border for PNG download */
+.card:global(.export-mode) {
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  background: var(--color-bg);
+}
+
+@media (max-width: 767px) {
+  .card {
+    grid-template-columns: 1fr;
+    min-height: unset;
+  }
+
+  .artworkCol {
+    max-height: 320px;
+  }
+}
+
+.artworkCol,
+.poemCol {
+  min-height: 0;
+}
