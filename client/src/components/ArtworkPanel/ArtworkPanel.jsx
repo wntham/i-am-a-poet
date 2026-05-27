@@ -20,7 +20,6 @@ export default function ArtworkPanel({ artwork, error }) {
           src={artwork.imageUrl}
           alt={`${artwork.title} by ${artwork.artist}`}
           className={styles.image}
-          crossOrigin="anonymous"
         />
       </div>
       <div className={styles.attribution}>
