@@ -5,13 +5,13 @@
   "buildCommand": "cd client && npm run build",
   "outputDirectory": "client/dist",
   "functions": {
-    "server/index.vercel.js": {
+    "api/index.js": {
       "memory": 512,
       "maxDuration": 30
     }
   },
   "rewrites": [
-    { "source": "/api/:path*", "destination": "/server/index.vercel.js" },
+    { "source": "/api/:path*", "destination": "/api/index.js" },
     { "source": "/:path*", "destination": "/index.html" }
   ]
 }
